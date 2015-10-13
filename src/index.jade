@@ -11,163 +11,457 @@ html
   head
   meta(charset='utf-8')
   meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-  title Make your REST services attack proof
+  title Innovating Democracy with Java EE and Open Source 
 
   link(rel='stylesheet', type='text/css', href='build/build.css')
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
 
   body
 
     article
 
       +slide('title')
-        h1  Make your <span class='important'>REST</span> services<br /> <span class='important'>attack</span> proof
-        aside(role='note') SPA and public API
+        h1  Innovating Democracy with <span class='important'>Java EE</span> and Open Source 
+        aside(role='note') My experience in several projects
 
       +slide
         img.avatar(src='images/profile.jpg')
         h4 @alexsotob - lordofthejars.com
         img.cloudbees(src='images/cloudbees.png')
         img.logos(src='images/logos.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
 
       +slide
         div.images
           img.side-by-side(src='images/dzone1.png')
           img.side-by-side(src='images/aia.jpg')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
 
-      +slide('still matrix')
-        h2 Don't
-        h3 &mdash; be &mdash;
-        h2 scared
+      +slide('especies')
+        h2 Take What 
+        h3 &mdash; You &mdash; 
+        h2 Need
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
 
-      +slide('prepare')
-        h2 Prepare your Devices
+      +slide('adarise')
+        h1 Questions
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
 
+      +slide('java_ee')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Different elements Tech and not Tech
+        
+      +slide('mental')
+        h2 Mental Health
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Comes from developers
+        
+      +slide('fit')
+        h2.underline Only Services
+        ul.lists
+          li JAX-RS
+          li JSON-P
+          li Bean Validation
+          li EJB
+          li JPA
+          li CDI
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') AngularJS, Materials ... + JSON
+    
+      +slide('runner')
+        h1.title-single-words Application <span class='important'>Server</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Open source for transparency
+      
+      +slide('tomee')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('tomcat')
+        h2 It is a 
+        h2 <span class='important'>Tomcat</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') IDE, IT who deploys happy
+        
+      +slide('certified')
+        h2 It is 
+        h2 <span class='important'>Certified</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Portable and knowldgable, and tested
+    
+      +slide('light')
+        h2 It is 
+        h2 <span class='important'>Light</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') under 100MB of RAM
+      
+      +slide('shin')
+        h2 It is 
+        h2 <span class='important'>Fast</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+    
+      +slide('engine')
+        h2 Let's see in Action
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+    
+      +slide('gears')
+        h1.title-single-words <span class='important'>JavaEE</span> In Practice
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars 
+    
+      +slide
+        h2 Dependencies
+        pre.small.language-javascript
+          code.
+            dependencies {
+              providedCompile group: 'javax', name: 'javaee-api', version:'7.0'
+            }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Provided implementation is on server side
+      
+      +slide    
+        h2 JAX-RS
+        pre.small.language-javascript
+          code.
+            @Singleton
+            @Path("/color")
+            public class ColorService {
+            
+              @Path("{color}")
+              @POST
+              @Consumes({APPLICATION_JSON})
+              public void addColor(
+                          @PathParam("color") @Size(min = 2, max = 4) String nameColor, 
+                          @Valid Color color) {
+                //... 
+              }
+            }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') EJB (sec, trans, conc) Bean Validation
+            
+      +slide    
+        h2 JPA
+        pre.small.language-javascript
+          code.
+            @Singleton
+            @Path("/color")
+            public class ColorService {
+            
+              @PersistenceContext
+              EntityManager entityManager;
+              
+              //....
+            }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') No DAO
+            
+      +slide    
+        h2 CDI
+        pre.small.language-javascript
+          code.
+            @Singleton
+            @Path("/color")
+            public class ColorService {
+            
+              @Inject
+              @SHA1Digest
+              MessageDigest digester;
+              
+              //....
+            }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Readable
+      
+      +slide    
+        h2 CDI
+        pre.small.language-javascript
+          code.
+            // Spain SMS JAR
+            public void sendSMS(@Observes @SMS NotificationEvent event) {
+            }
+            // US SMS JAR
+            public void sendSMS(@Observes @SMS NotificationEvent event) {
+            }
+            
+            //Logic
+            @Inject
+            @SMS
+            Event&lt;NotificationEvent&gt; smsEvent;
+            
+            smsEvent.fire(new NotificationEvent());
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Events as library
+      
+      +slide('rescue')
+        h1.title-single-words <span class='important'>TomEE</span> To The <span class='important'>Rescue</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
+      +slide('cockpit')
+        h2 Configuration
+        h3 &mdash; of &mdash;
+        h2 Resources
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide    
+        h2 Resource Configuration
+        h3 conf/tomee.xml &mdash; WEB-INF/resources.xml
+        pre.small.language-xml
+          code.
+            &lt;tomee&gt;
+              &lt;Resource id=”myds” type=”DataSource”&gt;
+                JdbcDriver = org.hsqldb.jdbc.JDBCDriver
+                JdbcUrl = jdbc:hsqldb:mem:my-datasource
+                Username = SA
+                Password =
+                minEvictableIdleTime = 30 minutes
+              &lt;/Resource&gt;
+
+              &lt;Container id=”stateless-container” type=”STATELESS”&gt;
+                PoolSize = 50
+                StrictPooling = true
+              &lt;/Container&gt;
+            &lt;/tomee&gt;
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Classpath (resources tag) or global (tomee tag), Readable (time), Work with defaults (HSQLDB)
+        
+      +slide    
+        h2 Placeholders
+        pre.small.language-xml
+          code.
+            &lt;tomee&gt;
+              &lt;Resource id=”myds” type=”DataSource”&gt;
+                JdbcUrl = ${DB_URL:-jdbc:hsqldb:mem:}movies
+              &lt;/Resource&gt;
+            &lt;/tomee&gt;
+            
+            export DB_URL=jdbc:mysql://localhost/
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Defaults + system environment - Idea in Docker ENV + Partial things
+      
+      +slide    
+        h2 System Properties
+        pre.small.language-xml
+          code.
+            &lt;tomee&gt;
+              &lt;Resource id=”myds” type=”DataSource”&gt;
+                JdbcUrl = jdbc:hsqldb:mem:movies
+              &lt;/Resource&gt;
+            &lt;/tomee&gt;
+            
+            -Dmyds.JdbcUrl=jdbc:mysql://localhost/
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Override whole property
+      
+      +slide    
+        h2 Custom Resources
+        pre.small.language-xml
+          code.
+            &lt;tomee&gt;
+              &lt;Resource id="mongoClient" class-name="com.mongodb.MongoClient"&gt;
+                host  localhost
+              &lt;/Resource&gt;
+            &lt;/tomee&gt;
+        hr
+        pre.small.language-javascript
+          code.
+            @Resource(name = "mongoClient")
+            private MongoClient mongoClient;
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') ActiveMQResourceAdapter,javax.jms.ConnectionFactory,javax.mail.Session 
+      
+      +slide    
+        h2 Custom Resources
+        pre.small.language-xml
+          code.
+            &lt;Resource id="..." properties-provider="org.superbiz.RedisProvider"&gt;
+              host localhost
+            &lt;/Resource&gt;
+        hr
+        pre.small.language-javascript
+          code.
+            public class RedisProvider {
+              private Properties properties;
+            
+              public void setProperties(final Properties p) {
+                this.p = p;
+              }
+              public Properties provides() {
+                Jedis jedis = new Jedis(this.p.get("host");
+                return fillOrAppendProperties(jedis);
+              }
+            }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') configuration common to several services, central point of getting algorithms SHA-1 
+      
+      
+      +slide('alexband')
+        h2 Password <span class='important'>Encryption</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide    
+        h2 Password Cipher
+        pre.small.language-xml
+          code.
+            &lt;Resource id=”myds” type=”DataSource”&gt;
+              //.....
+              Password = xMH5uM1V9vQzVUv5LG7YLA==
+              PasswordCipher = Static3DES
+            &lt;/Resource&gt;
+        hr
+        pre.small.language-xml
+          code.
+            &lt;Resource id=”myresource” class-name="org.superbiz.VaultGateway"&gt;
+              //.....
+              VaultPassword = cipher:Static3DES:xMH5uM1V9vQzVUv5LG7YLA==
+            &lt;/Resource&gt;
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') StaticDES comes in TomEE
+      
+      +slide    
+        h2 Password Cipher
+        pre.small.language-javascript
+          code.
+            public static class SymmetricEncryption implements PasswordCipher {
+              @Override public char[] encrypt(String plainPassword) {
+              }
+              @Override public String decrypt(char[] encryptedPassword) {
+              }
+            }
+        hr
+        pre.small.language-bash
+          code.
+            META-INF/org.apache.openejb.cipher.PasswordCipher/&lt;PasswordCipher&gt; 
+        hr
+        pre.small.language-bash
+          code.
+            VaultPassword = cipher:&lt;PasswordCipher&gt;:xMH5uM1V9vQzVUv5LG7YLA==
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
+      +slide('vault')
+        h1.title-single-words <span class='important'>Security</span> and REST-API
+        div.footer Alex Soto (@alexsotob)
+        
       +slide('rest')
-        h1 REST API Introduction
-
-      +slide
-        h2.underline What is REST?
-        ul.lists
-          li Architecture style
-          li Simpler alternative to SOAP, CORBA, RPC systems
-        div.footer Alex Soto (@alexsotob)
-
-      +slide
-        h2.underline Constraints
-        ul.lists
-          li.important Client-server
-          li.important Stateless
-          li Cacheable on client
-          li Code on demand (optional)
-          li Layered system
-          li Uniform interface
-
-        aside(role='note') Client untrusted
-        aside(role='note') how to identify resources, manipulate, ...
-        div.footer Alex Soto (@alexsotob)
-
-      +slide
-        h2.underline What are RESTful WebServices?
-        ul.lists
-          li REST over webservices
-          li URI for identifying resources
-          li HTTP methods for operations
-          li MIME-type for representation
-          li hypertext links
-
-        div.footer Alex Soto (@alexsotob)
-
-      +slide
-        <b>GET</b> http://example.com/items/12
-        div.footer Alex Soto (@alexsotob)
-
-      +slide
-        <b>POST</b> http://example.com/items
-        div.footer Alex Soto (@alexsotob)
-
-      +slide
-        <b>PUT</b> http://example.com/items/12
-        div.footer Alex Soto (@alexsotob)
-
-      +slide
-        <b>DELETE</b> http://example.com/items/12
-        div.footer Alex Soto (@alexsotob)
-
-      +slide
-        <b>PATCH</b> http://example.com/items/12
-        div.footer Alex Soto (@alexsotob)
-
-      +slide('hotel')
-        h1 Authentication <br />vs<br /> Authorization
-
-      +slide
-        h3 Authentication = Registration Desk
-        h3 Authorization = Keys of your Room
-        div.footer Alex Soto (@alexsotob)
-
+        h2 REST APIs
+        h3 &mdash; are &mdash;
+        h2 <span class='important'>Stateless</class>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
       +slide('oldsec')
-        h1 Java EE <br />and<br /><span class='important'>Security</span>
-
+        h2 Java EE 
+        h3 &mdash; and &mdash;
+        h2 <span class='important'>Security</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
         aside(role='note') Http Session old times, web desc, java ee, Shiro Spring Sec
 
       +slide
         img.schemas(src='images/cookies.png')
-
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
       +slide('cookies')
-        h2 Perils of <span class='important'>cookies</span>
-
-      +slide('owasp')
-        h3 &ldquo;<b>XSS</b> attacks occur when an attacker uses a web application<br /> to send malicious code, generally in the form of a browser side script,<br /> to a different end user.&rdquo;
-        h4 &mdash; OWASP site &mdash;
-
-        aside(role='note') Like SQL injection
-        div.footer Alex Soto (@alexsotob)
-
-      +slide('owasp')
-        h3 &ldquo;<b>CSRF</b> is an attack that forces an end user to execute unwanted actions on a web application <br /> in which they're currently authenticated.&rdquo;
-        h3 &lt;img src="http://bank.com/transfer.do?acct=MARIA&amount=100000" width="0" height="0" border="0"&gt;
-        h4 &mdash; OWASP site &mdash;
-
-        aside(role='note') Malicious system acts on behalf of real user
-        div.footer Alex Soto (@alexsotob)
-
-      +slide('owasp')
-        h3 &ldquo;<b>The man-in-the middle</b> attack intercepts a communication between two systems.<br />The MITM attack could also be done over an https connection by using the same technique.&rdquo;
-        h4 &mdash; OWASP site &mdash;
-
-        aside(role='note') Https not secure
-        div.footer Alex Soto (@alexsotob)
-
+        h2.underline Perils of <span class='important'>cookies</span>
+        ul.list
+          li XSS
+          li MITM
+        ul.list
+          li CSRF (bank.com/transfer.do?acct=MARIA&amount=1000)
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') XSS like SQL Injection, CSRF Malicious system acts on behalf of real user
+      
       +slide('adaoh')
-        h2 HTTP Session and <span class='important'>RESTful</span>
-
-      +slide
-        h2.underline HTTP Sessions
+        h2.underline HTTP Session and <span class='important'>REST APIs</span>
         ul.lists
           li Opaque
           li Microservices roundtrip
           li Stateful
           li No Scalable
-
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
         aside(role='note') /profile
-        div.footer Alex Soto (@alexsotob)
-
-      +slide('vault')
-        h1.title-single-words A new <span class='important'>Hope</span>
-
+      
       +slide('tokens')
         h2 <span class='important'>TOKENS</span>
-
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
         aside(role='note') Travels everytime to server
 
       +slide('jwt')
         h2 JWT
         h3 (jot)
         h2 JSON Web Token
-
-        aside(role='note') Part of JOSE RFC 7519
-        div.footer Alex Soto (@alexsotob)
-
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Part of JOSE RFC 7519, we are not google
+      
       +slide
         h2.underline What is <span class='important'>JWT</span>?
         ul.lists
@@ -175,133 +469,334 @@ html
           li HTTP header or URL parameter
           li Claims are JSON
           li Enable claims digitally signed, MACed or encrypted
-        div.footer Alex Soto (@alexsotob)
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
 
       +slide
         img(src='images/tokencolor.png')
-
-      +slide
-        h2.green Header
-        pre.language-javascript
-          code.
-            {
-              "type": "JWT",
-              "alg": "HS256"
-            }
-        pre.language-java
-          code.
-            String header = new String(Base64.encodeBase64URLSafe(headerObject)
-
-      +slide
-        img(src='images/tokencolor.png')
-
-      +slide
-        h2.yellowColor Claims
-        pre.language-javascript
-          code.
-            {
-              "iss": "example.com",
-              "sub": "alex",
-              "exp": 1416891754,
-              "roles": ["ADMIN", "USER"]
-            }
-
-        pre.language-java
-          code.
-            String claims = new String(Base64.encodeBase64URLSafe(claimObject)
-
-      +slide
-        img(src='images/tokencolor.png')
-
-      +slide
-        h2.blue Signature
-        pre.language-java
-          code.
-            String signature = sign(algorithm,
-                                    join(new String[] {header, claims}, "."),
-                                    secret);
-      +slide
-        img(src='images/tokencolor.png')
-
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
       +slide
         h2 JWT
-        pre.language-java
+        pre.small.language-javascript
           code.
-            String token = header + "." + payload + "." + signature;
-
+            //Header
+            Base64({
+              "type": "JWT", "alg": "HS256"
+            }).
+            //Claims
+            Base64({
+              "iss": "example.com", "sub": "alex",
+              "exp": 1416891754, "roles": ["ADMIN", "USER"]
+            }).
+            sign(header+.+claims)
+        div.footer Alex Soto (@alexsotob)
+        
+      +slide
+        h2.underline Java implementations
+        ul.lists
+          li Nimbus JOSE
+          li Java JWT
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
       +slide
         img.schemas(src='images/jwt_wf.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
+      +slide('test')
+        h1 <span class='important'>Testing</span> and <span class='important'>Java EE</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
+      +slide
+        h2 Write Unit Tests
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Write Unit test as usually, small group classes related, and forget about annotations, use Mocks
+      
+      +slide    
+        h2 JUnit
+        table
+          tr
+            td
+              pre.small.language-javascript
+                code.
+                  @Singleton
+                  @Path("/color")
+                  public class ColorService {
+                    @PersistenceContext
+                    EntityManager entityManager;
 
+                    @POST
+                    public void addColor(...) {}
+                    @GET
+                    public Color getColor(...){}
+                  }
+            td.spaceleft
+              pre.small.language-javascript
+                code.
+                  @Test
+                  public void addAndGetColor() {
+                    EntityManager em = mock(EntityManager.class);
+                    //...
+                    
+                    ColorService colorService = new ColorService();
+                    colorService.entityManager = em;
+                
+                    colorService.addColor("green");
+                    assertThat(colorService.getColor(), is("green"));
+                  }
+        div.footer Alex Soto (@alexsotob)
+      +slide('schrodinger')
+        h2 Avoid <span class='important'>Schrödinger’s</span> Code
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Code that has been written, but not tested, and is in a state of neither working nor failing until it is observed
+      
+      +slide
+        h2.underline Woult it Work in <span class='important'>Production</span>?
+        ul.lists
+          li Entity Manager configuration
+          li Transactions
+          li CDI Qualifiers
+          li CDI Events
+          li JAX-RS
+          li HTTP Servlet Filters
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') We don't know until deployed on an AS. Manually?
+      
+      +slide('arquillian')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2.underline Steps of <span class='important'>Arquillian</span>
+        ul.lists
+          li Choose Application Server
+          li Start Application Server
+          li (micro)Package the Application
+          li Run Tests (In Container or As Client)
+          li Stop Application Server
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') White/Black Box tests
+      
+      +slide    
+        h2 Arquillian Test
+        table
+          tr
+            td
+              pre.small.language-javascript
+                code.
+                  dependencyManagement {
+                    imports {
+                      mavenBom 
+                      'org.arquillian:arquillian-universe:1.0.0.Alpha1'
+                    }
+                  }
+                  
+                  testCompile group: 'org.arquillian.universe', 
+                              name: 'arquillian-junit', 
+                              ext: 'pom'
+                  testCompile group: 'org.apache.openejb', 
+                              name: 'arquillian-tomee-embedded', 
+                              version:'1.7.2'
+                  testCompile group: 'org.apache.openejb', 
+                              name: 'tomee-jaxrs', 
+                              version:'1.7.2'
+            td.spaceleft
+              pre.small.language-javascript
+                code.
+                  @RunWith(Arquillian.class)
+                  public class ColorServiceIntegrationTest {
+
+                  @Deployment public static WebArchive create() {
+                    return ShrinkWrap.create(WebArchive.class)
+                                      .addClasses(ColorService.class, 
+                                                  Color.class);
+                  }
+                  @ArquillianResource private URL webappUrl;
+
+                  @Test public void postAndGet() throws Exception {
+                    final WebClient webClient = WebClient
+                                                .create(webappUrl);
+                    final Response response = webClient
+                                                .path("color/green")
+                                                .post(null);
+                    assertThat(response.getStatus(), is(204));
+                    //...
+                  }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
       +slide('engine')
-        h2 Start your Engines
-
-      +slide('adaglasses')
-        h1 Let's see inside
-
-      +slide('finger')
-        h2 Fingerprinting tokens
-
+        h2 Let's see in Action
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
       +slide
-        h2.underline Fingerprinting tokens
-        ul.lists
-          li Unique parameters
-          li One degree of freedom
-          li Detect stolen tokens
-
-        aside(role='note') People may use different approaches as well
-        div.footer Alex Soto (@alexsotob)
-
+        h2 Docker
+        h3 &mdash; not used &mdash;
+        h2 in <span class='important'>Production</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
+      +slide('cube')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
       +slide
-        h2.underline Fingerprinting tokens
+        h2.underline Steps of <span class='important'>Arquillian</span>
         ul.lists
-          li Connection: IP, SSL ID
-          li Browser: Agent, Accept-Language, Accept, Accept-Encoding
-          li Javascript: Screen size, OS, TimeZone
-        div.footer Alex Soto (@alexsotob)
-
-      +slide('alexband')
-        h1 Watch your <br/> <span class='important'>sensitive data</span>
-
+          li Extension for Docker
+          li Support for Native, Boot2Docker and Docker-Machine
+          li Docker-Compose definition
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Start Stop Docker images. Help for services that call another service
+      
+      +slide    
+        h2 Arquillian Cube Test
+        table
+          tr
+            td
+              pre.small.language-javasript
+                code.
+                  testCompile group: 'org.arquillian.universe', 
+                              name: 'arquillian-cube', 
+                              ext: 'pom'
+            td.spaceleft
+              pre.small.language-xml
+                code.
+                  &lt;arquillian&gt;
+                    &lt;extension qualifier="docker"&gt;
+                    &lt;property name="definitionFormat"&gt;COMPOSE&lt;/property&gt;
+                    &lt;property name="machineName"&gt;dev&lt;/property&gt;
+                    &lt;property name="dockerContainersFile"&gt;compose.yml&lt;/property&gt;
+                  &lt;/extension&gt;
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
       +slide
-        h2.underline Encryption
+        h2.underline Arquillian Tests
         ul.lists
-          li Use TLS
-          li Encrypt JWT claims using <span class='important'>JWE</span>
-          li Nested JWT using <span class='important'>JWE</span> (signed -> encrypted)
-        div.footer Alex Soto (@alexsotob)
-
-      +slide('pirates')
-        h2 Foolproof
-
+          li Integration Tests
+          li Functional Tests (Drone/Graphene)
+          li BDD Tests (Cucumber)
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      
+      +slide('datacenter')
+        h1 Deploying to <span class='important'>Production</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Fault tolerant, dynamic resources (12h 15d), easy
+      
+      +slide('mesosmarathon')
+        h2.black.underline Mesos + Marathon
+        ul.lists
+          li.black Apache Project
+          li.black Cluster of Resources as One
+          li.black Fault-Tolerant
+          li.black Elastic Distributed
+          li.black Native/Docker
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Typically u work static 3 servers for x 3 for y but not same resources at once
+      
+      +slide
+        img.schemas(src='images/marathondep.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
+      +slide('discovery')
+        h2 Service Discovery
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') autorefresh HAProxy --> DNS approach
+      
+      +slide
+        h2 Service Discovery Schema
+        img.schemas(src='images/discovery.png')
+        aside(role='note') HAProxy is at localhost
+        
+      +slide
+        h2 Run Apache TomEE 
+        pre.small.language-json
+          code.
+            {
+              "id": "projectdemo",
+              "cmd": "cd apache-tomee-plus* 
+                      && sed \"s/8080/$PORT/g\" < ./conf/server.xml > ./conf/server-mesos.xml 
+                      && ./bin/catalina.sh run -config ./conf/server-mesos.xml",
+              "mem": 256,
+              "cpus": 0.5,
+              "instances": 1,
+              "ports":[10000],
+              "constraints": [
+                ["hostname", "UNIQUE"]
+              ],
+              "uris": [
+                "http://ftp.cixug.es/apache/tomee/tomee-1.7.2/apache-tomee-1.7.2-plus.tar.gz"
+              ]
+            }
+      
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('engine')
+        h2 Let's see in Action
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
       +slide('ending')
         h1 Let's wind <br/> down
-
-      +slide
-        h2.underline Conclusions
-        ul.lists
-          li Tokens simplifies RESTful auth
-          li Easy to implement and test
-          li No Logout
-          li OAuth2, SAML, OpenID
-          li Nimbus JOSE + JWT / JJWT
-          li Key rotation
-          li Don't use HTML 5 Web Storage
-          li F5 survival with server cookies
-          li Stateful Tokens (oh no)
-
-        aside(role='note') Test easy bcause it is stateless you only need one one token
-        div.footer Alex Soto (@alexsotob)
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('still fight')
+        h2 <span class='important'>Java EE</span> vs Spring
+        aside(role='note') What you need, Java EE 8
 
       +slide
         img.avatar(src='images/profile.jpg')
         br
         a(href='http://github.com/lordofthejars/jwt-jz', style='border:none')
+          i.fa.fa-github
           h3 http://github.com/lordofthejars/jwt-jz
-
-      +slide('adarise')
-        h1 Questions
-
-      +slide('javazone')
-        h1 Tusen Takk
+          i.fa.fa-envelope
+          h3 asotobu@gmail.com
+      
+      +slide('javaone')
+        h1 Thank You So Much
 
     script(src='build/build.js')

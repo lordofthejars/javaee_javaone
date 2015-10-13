@@ -1,11 +1,11 @@
 {
-  "name": "make-your-REST-services-attack-proof",
+  "name": "Innovating-Democracy-with-Java-EE-and-Open-Source",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:lordofthejars/jwt-jz.git"
+    "url": "git@github.com:lordofthejars/javaee_javaone.git"
   },
   "scripts": {
     "serve": "gulp serve",
