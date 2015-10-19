@@ -20,7 +20,7 @@ html
 
     article
 
-      +slide('burns')
+      +slide
         h1  Innovating Democracy with Java EE and Open Source
         aside(role='note') My experience in several projects
 
@@ -452,7 +452,7 @@ html
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') Travels everytime to server
+        aside(role='note') Travels everytime to server, chunk with info(Claims)
 
       +slide('jwt')
         h2 JWT
@@ -565,7 +565,7 @@ html
         aside(role='note') Code that has been written, but not tested, and is in a state of neither working nor failing until it is observed
       
       +slide
-        h2.underline Woult it Work in <span class='important'>Production</span>?
+        h2.underline Would it Work in <span class='important'>Production</span>?
         ul.lists
           li Entity Manager configuration
           li Transactions
@@ -582,6 +582,7 @@ html
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Middleware, takes care of starting/stopping the AS and deploy. Reduce int tests to child game
       
       +slide
         h2.underline Steps of <span class='important'>Arquillian</span>
@@ -632,7 +633,7 @@ html
                   }
                   @ArquillianResource private URL webappUrl;
 
-                  @Test public void postAndGet() throws Exception {
+                  @Test @RunAsClient public void postAndGet() {
                     final WebClient webClient = WebClient
                                                 .create(webappUrl);
                     final Response response = webClient
@@ -651,7 +652,7 @@ html
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
       
-      +slide
+      +slide('whale')
         h2 Docker
         h3 &mdash; not used &mdash;
         h2 in <span class='important'>Production</span>
@@ -717,13 +718,13 @@ html
         aside(role='note') Fault tolerant, dynamic resources (12h 15d), easy
       
       +slide('mesosmarathon')
-        h2.black.underline Mesos + Marathon
+        h2.underline Mesos + Marathon
         ul.lists
-          li.black Apache Project
-          li.black Cluster of Resources as One
-          li.black Fault-Tolerant
-          li.black Elastic Distributed
-          li.black Native/Docker
+          li Apache Project
+          li Cluster of Resources as One
+          li Fault-Tolerant
+          li Elastic Distributed
+          li Native/Docker
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
