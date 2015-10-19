@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <body>
     <article>
-      <section data-bespoke-backdrop="backdrop backdrop--burns" class="burns undefined">
+      <section>
         <h1> Innovating Democracy with Java EE and Open Source</h1>
         <aside role="note">My experience in several projects</aside>
       </section>
@@ -331,7 +331,7 @@ private MongoClient mongoClient;</code></pre>
       <section data-bespoke-backdrop="backdrop backdrop--tokens" class="tokens undefined">
         <h2><span class='important'>TOKENS</span></h2>
         <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
-        <aside role="note">Travels everytime to server</aside>
+        <aside role="note">Travels everytime to server, chunk with info(Claims)</aside>
       </section>
       <section data-bespoke-backdrop="backdrop backdrop--jwt" class="jwt undefined">
         <h2>JWT</h2>
@@ -427,7 +427,7 @@ public void addAndGetColor() {
         <aside role="note">Code that has been written, but not tested, and is in a state of neither working nor failing until it is observed</aside>
       </section>
       <section>
-        <h2 class="underline">Woult it Work in <span class='important'>Production</span>?</h2>
+        <h2 class="underline">Would it Work in <span class='important'>Production</span>?</h2>
         <ul class="lists">
           <li>Entity Manager configuration</li>
           <li>Transactions</li>
@@ -441,6 +441,7 @@ public void addAndGetColor() {
       </section>
       <section data-bespoke-backdrop="backdrop backdrop--arquillian" class="arquillian undefined">
         <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">Middleware, takes care of starting/stopping the AS and deploy. Reduce int tests to child game</aside>
       </section>
       <section>
         <h2 class="underline">Steps of <span class='important'>Arquillian</span></h2>
@@ -487,7 +488,7 @@ public class ColorServiceIntegrationTest {
 }
 @ArquillianResource private URL webappUrl;
 
-@Test public void postAndGet() throws Exception {
+@Test @RunAsClient public void postAndGet() {
   final WebClient webClient = WebClient
                               .create(webappUrl);
   final Response response = webClient
@@ -505,7 +506,7 @@ public class ColorServiceIntegrationTest {
         <h2>Let's see in Action</h2>
         <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
       </section>
-      <section>
+      <section data-bespoke-backdrop="backdrop backdrop--whale" class="whale undefined">
         <h2>Docker</h2>
         <h3>&mdash; not used &mdash;</h3>
         <h2>in <span class='important'>Production</span></h2>
@@ -560,13 +561,13 @@ public class ColorServiceIntegrationTest {
         <aside role="note">Fault tolerant, dynamic resources (12h 15d), easy</aside>
       </section>
       <section data-bespoke-backdrop="backdrop backdrop--mesosmarathon" class="mesosmarathon undefined">
-        <h2 class="black underline">Mesos + Marathon</h2>
+        <h2 class="underline">Mesos + Marathon</h2>
         <ul class="lists">
-          <li class="black">Apache Project</li>
-          <li class="black">Cluster of Resources as One</li>
-          <li class="black">Fault-Tolerant</li>
-          <li class="black">Elastic Distributed</li>
-          <li class="black">Native/Docker</li>
+          <li>Apache Project</li>
+          <li>Cluster of Resources as One</li>
+          <li>Fault-Tolerant</li>
+          <li>Elastic Distributed</li>
+          <li>Native/Docker</li>
         </ul>
         <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
         <aside role="note">Typically u work static 3 servers for x 3 for y but not same resources at once</aside>
