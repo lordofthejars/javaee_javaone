@@ -157,8 +157,13 @@ html
             @Path("/color")
             public class ColorService {
             
-              @Path("{color}")
-              @POST
+              @PersistenceContext
+              EntityManager em;
+            
+              @Inject @SHA1MEssageDigest
+              MessageDigest messageDigest;
+              
+              @POST @Path("{color}")
               @Consumes({APPLICATION_JSON})
               public void addColor(
                           @PathParam("color") @Size(min = 2, max = 4) String nameColor, 
@@ -170,43 +175,6 @@ html
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
         aside(role='note') EJB (sec, trans, conc) Bean Validation
-            
-      +slide    
-        h2 JPA
-        pre.small.language-javascript
-          code.
-            @Singleton
-            @Path("/color")
-            public class ColorService {
-            
-              @PersistenceContext
-              EntityManager entityManager;
-              
-              //....
-            }
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') No DAO
-            
-      +slide    
-        h2 CDI
-        pre.small.language-javascript
-          code.
-            @Singleton
-            @Path("/color")
-            public class ColorService {
-            
-              @Inject
-              @SHA1Digest
-              MessageDigest digester;
-              
-              //....
-            }
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') Readable
       
       +slide    
         h2 CDI
@@ -319,33 +287,6 @@ html
           i.fa.fa-github &nbsp;lordofthejars
         aside(role='note') ActiveMQResourceAdapter,javax.jms.ConnectionFactory,javax.mail.Session 
       
-      +slide    
-        h2 Custom Resources
-        pre.small.language-xml
-          code.
-            &lt;Resource id="..." properties-provider="org.superbiz.RedisProvider"&gt;
-              host localhost
-            &lt;/Resource&gt;
-        hr
-        pre.small.language-javascript
-          code.
-            public class RedisProvider {
-              private Properties properties;
-            
-              public void setProperties(final Properties p) {
-                this.p = p;
-              }
-              public Properties provides() {
-                Jedis jedis = new Jedis(this.p.get("host");
-                return fillOrAppendProperties(jedis);
-              }
-            }
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') configuration common to several services, central point of getting algorithms SHA-1 
-      
-      
       +slide('alexband')
         h2 Password <span class='important'>Encryption</span>
         div.footer
@@ -371,146 +312,8 @@ html
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') StaticDES comes in TomEE
+        aside(role='note') StaticDES comes in TomEE, but you can define your own implementing PasswordCipher int.
       
-      +slide    
-        h2 Password Cipher
-        pre.small.language-javascript
-          code.
-            public static class SymmetricEncryption implements PasswordCipher {
-              @Override public char[] encrypt(String plainPassword) {
-              }
-              @Override public String decrypt(char[] encryptedPassword) {
-              }
-            }
-        hr
-        pre.small.language-bash
-          code.
-            META-INF/org.apache.openejb.cipher.PasswordCipher/&lt;PasswordCipher&gt; 
-        hr
-        pre.small.language-bash
-          code.
-            VaultPassword = cipher:&lt;PasswordCipher&gt;:xMH5uM1V9vQzVUv5LG7YLA==
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        
-      +slide('vault')
-        h1.title-single-words <span class='important'>Security</span> and REST-API
-        div.footer Alex Soto (@alexsotob)
-        
-      +slide('rest')
-        h2 REST APIs
-        h3 &mdash; are &mdash;
-        h2 <span class='important'>Stateless</class>
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') Each communication contains all u need
-        
-      +slide('oldsec')
-        h2 Java EE 
-        h3 &mdash; and &mdash;
-        h2 <span class='important'>Security</span>
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') Http Session old times, web desc, java ee, Shiro Spring Sec
-
-      +slide
-        img.schemas(src='images/cookies.png')
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        
-      +slide('cookies')
-        h2.underline Perils of <span class='important'>cookies</span>
-        ul.list
-          li XSS
-          li MITM
-        ul.list
-          li CSRF (bank.com/transfer.do?acct=MARIA&amount=1000)
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') XSS like SQL Injection, CSRF Malicious system acts on behalf of real user
-      
-      +slide('adaoh')
-        h2.underline HTTP Session and <span class='important'>REST APIs</span>
-        ul.lists
-          li Opaque
-          li Microservices roundtrip
-          li Stateful
-          li No Scalable
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') /profile
-      
-      +slide('tokens')
-        h2 <span class='important'>TOKENS</span>
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') Travels everytime to server, chunk with info(Claims)
-
-      +slide('jwt')
-        h2 JWT
-        h3 (jot)
-        h2 JSON Web Token
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') Part of JOSE RFC 7519, we are not google
-      
-      +slide
-        h2.underline What is <span class='important'>JWT</span>?
-        ul.lists
-          li URL safe-token
-          li HTTP header or URL parameter
-          li Claims are JSON
-          li Enable claims digitally signed, MACed or encrypted
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-
-      +slide
-        img(src='images/tokencolor.png')
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        
-      +slide
-        h2 JWT
-        pre.small.language-javascript
-          code.
-            //Header
-            Base64({
-              "type": "JWT", "alg": "HS256"
-            }).
-            //Claims
-            Base64({
-              "iss": "example.com", "sub": "alex",
-              "exp": 1416891754, "roles": ["ADMIN", "USER"]
-            }).
-            sign(header+.+claims)
-        div.footer Alex Soto (@alexsotob)
-        
-      +slide
-        h2.underline Java implementations
-        ul.lists
-          li Nimbus JOSE
-          li Java JWT
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        
-      +slide
-        img.schemas(src='images/jwt_wf.png')
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        
       +slide('test')
         h1 <span class='important'>Testing</span> and <span class='important'>Java EE</span>
         div.footer
@@ -792,9 +595,9 @@ html
       +slide
         img.avatar(src='images/profile.jpg')
         br
-        a(href='http://github.com/lordofthejars/jwt-jz', style='border:none')
+        a(href='http://github.com/lordofthejars/javaee_javaone', style='border:none')
           i.fa.fa-github
-          h3 http://github.com/lordofthejars/jwt-jz
+          h3 http://github.com/lordofthejars/javaee_javaone
           i.fa.fa-envelope
           h3 asotobu@gmail.com
       
