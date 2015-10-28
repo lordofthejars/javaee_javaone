@@ -154,6 +154,7 @@ html
         pre.small.language-javascript
           code.
             @Singleton
+            @Lock(LockType.READ)
             @Path("/color")
             public class ColorService {
             
@@ -163,13 +164,13 @@ html
               @Inject @SHA1MEssageDigest
               MessageDigest messageDigest;
               
-              @POST @Path("{color}")
+              @POST @Path("{color}") 
               @Consumes({APPLICATION_JSON})
               public void addColor(
                           @PathParam("color") @Size(min = 2, max = 4) String nameColor, 
                           @Valid Color color) {
-                //... 
-              }
+                          
+                }
             }
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
@@ -180,12 +181,6 @@ html
         h2 CDI
         pre.small.language-javascript
           code.
-            // Spain SMS JAR
-            public void sendSMS(@Observes @SMS NotificationEvent event) {
-            }
-            // US SMS JAR
-            public void sendSMS(@Observes @SMS NotificationEvent event) {
-            }
             
             //Logic
             @Inject
@@ -193,6 +188,14 @@ html
             Event&lt;NotificationEvent&gt; smsEvent;
             
             smsEvent.fire(new NotificationEvent());
+            
+            // Spain SMS JAR
+            public void sendSMS(@Observes @SMS NotificationEvent event) {
+            }
+            // US SMS JAR
+            public void sendSMS(@Observes @SMS NotificationEvent event) {
+            }
+            
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
